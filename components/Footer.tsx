@@ -102,7 +102,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <p className="font-body text-sm text-brand-muted">
+        <p className="font-body text-base text-brand-muted">
           &copy; {currentYear} Exit Left. All rights reserved.
         </p>
       </div>

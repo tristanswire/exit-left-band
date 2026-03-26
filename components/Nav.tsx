@@ -11,6 +11,8 @@ const navLinks = [
   { label: "PHOTOS", href: "#gallery" },
 ];
 
+const staggerDelays = ["50ms", "100ms", "150ms", "200ms"];
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,15 +23,69 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [menuOpen]);
+
   function handleLinkClick() {
     setMenuOpen(false);
   }
 
   return (
     <>
+      {/* Full screen mobile overlay */}
+      <div
+        className="fixed inset-0 z-40 flex flex-col items-center justify-center md:hidden"
+        style={{
+          background: "#080f0b",
+          opacity: menuOpen ? 1 : 0,
+          transform: menuOpen ? "translateY(0)" : "translateY(-10px)",
+          visibility: menuOpen ? "visible" : "hidden",
+          transition: "opacity 300ms ease, transform 300ms ease, visibility 300ms ease",
+          pointerEvents: menuOpen ? "all" : "none",
+        }}
+        aria-hidden={!menuOpen}
+      >
+        <div className="flex flex-col items-center gap-10">
+          {navLinks.map(({ label, href }, i) => (
+            <a
+              key={label}
+              href={href}
+              onClick={handleLinkClick}
+              className="font-heading text-4xl uppercase tracking-wide text-white transition-colors duration-200 hover:text-brand-green"
+              style={{
+                opacity: menuOpen ? 1 : 0,
+                transform: menuOpen ? "translateY(0)" : "translateY(8px)",
+                transition: `opacity 300ms ease ${staggerDelays[i]}, transform 300ms ease ${staggerDelays[i]}`,
+              }}
+            >
+              {label}
+            </a>
+          ))}
+          <a
+            href="#book"
+            onClick={handleLinkClick}
+            className={`${ctaClass} px-8 py-3 mt-6`}
+            style={{
+              opacity: menuOpen ? 1 : 0,
+              transform: menuOpen ? "translateY(0)" : "translateY(8px)",
+              transition: "opacity 300ms ease 250ms, transform 300ms ease 250ms",
+            }}
+          >
+            BOOK EXIT LEFT
+          </a>
+        </div>
+      </div>
+
+      {/* Nav bar */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled
+          scrolled || menuOpen
             ? "bg-brand-dark shadow-[0_2px_20px_rgba(0,0,0,0.6)]"
             : "bg-transparent"
         }`}
@@ -39,7 +95,7 @@ export default function Nav() {
           style={{ maxWidth: 1200, height: 72 }}
         >
           {/* Logo */}
-          <a href="#hero" aria-label="Exit Left Band — home">
+          <a href="#hero" aria-label="Exit Left Band — home" onClick={handleLinkClick}>
             <Image
               src="/images/logo.png"
               alt="Exit Left Band Logo"
@@ -55,23 +111,20 @@ export default function Nav() {
               <li key={label}>
                 <a
                   href={href}
-                  className="font-heading text-sm uppercase tracking-widest text-white transition-colors duration-200 hover:text-brand-green"
+                  className="font-heading text-base uppercase tracking-widest text-white transition-colors duration-200 hover:text-brand-green"
                 >
                   {label}
                 </a>
               </li>
             ))}
             <li>
-              <a
-                href="#book"
-                className={`${ctaClass} px-5 py-2 text-sm`}
-              >
+              <a href="#book" className={`${ctaClass} px-5 py-2 text-sm`}>
                 BOOK EXIT LEFT
               </a>
             </li>
           </ul>
 
-          {/* Hamburger (mobile) */}
+          {/* Hamburger / X (mobile) */}
           <button
             className="md:hidden flex items-center justify-center text-white"
             onClick={() => setMenuOpen((prev) => !prev)}
@@ -79,30 +132,12 @@ export default function Nav() {
             aria-expanded={menuOpen}
           >
             {menuOpen ? (
-              /* X icon */
-              <svg
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-              >
+              <svg width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             ) : (
-              /* Hamburger icon */
-              <svg
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-              >
+              <svg width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <line x1="3" y1="12" x2="21" y2="12" />
                 <line x1="3" y1="18" x2="21" y2="18" />
@@ -110,32 +145,6 @@ export default function Nav() {
             )}
           </button>
         </div>
-
-        {/* Mobile dropdown */}
-        {menuOpen && (
-          <div className="md:hidden w-full bg-brand-dark">
-            {navLinks.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                onClick={handleLinkClick}
-                className="flex items-center justify-center font-heading text-sm uppercase tracking-widest text-white transition-colors duration-200 hover:text-brand-green"
-                style={{ height: 56 }}
-              >
-                {label}
-              </a>
-            ))}
-            <div className="flex justify-center py-4">
-              <a
-                href="#book"
-                onClick={handleLinkClick}
-                className={`${ctaClass} px-6 py-3 text-sm`}
-              >
-                BOOK EXIT LEFT
-              </a>
-            </div>
-          </div>
-        )}
       </nav>
     </>
   );

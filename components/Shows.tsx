@@ -22,10 +22,10 @@ function FeaturedCard({ show }: { show: Show }) {
         NEXT SHOW
       </span>
       <div className="flex flex-col gap-1">
-        <p className="font-heading text-lg text-brand-dark">
+        <p className="font-heading text-xl text-brand-dark">
           {formatDate(show.date)} · {show.time}
         </p>
-        <p className="font-heading text-xl text-brand-dark uppercase">
+        <p className="font-heading text-2xl text-brand-dark uppercase">
           {show.venue}
         </p>
         <p className="font-body text-sm text-brand-muted">
@@ -35,7 +35,7 @@ function FeaturedCard({ show }: { show: Show }) {
           href={show.mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-heading text-sm tracking-wide text-brand-green mt-2 hover:underline"
+          className="font-heading text-base tracking-wide text-brand-green mt-2 hover:underline"
         >
           MAP IT →
         </a>
@@ -53,18 +53,18 @@ function ShowRow({ show, isLast }: { show: Show; isLast: boolean }) {
     >
       {/* Date / time */}
       <div className="sm:w-36 shrink-0">
-        <p className="font-heading text-sm uppercase text-brand-dark">
+        <p className="font-heading text-base uppercase text-brand-dark">
           {formatDate(show.date)}
         </p>
-        <p className="font-body text-xs text-brand-muted">{show.time}</p>
+        <p className="font-body text-sm text-brand-muted">{show.time}</p>
       </div>
 
       {/* Venue / location */}
       <div className="flex-1 sm:px-4">
-        <p className="font-heading text-base uppercase text-brand-dark">
+        <p className="font-heading text-lg uppercase text-brand-dark">
           {show.venue}
         </p>
-        <p className="font-body text-xs text-brand-muted">
+        <p className="font-body text-sm text-brand-muted">
           {show.city}, {show.state}
         </p>
       </div>
@@ -74,7 +74,7 @@ function ShowRow({ show, isLast }: { show: Show; isLast: boolean }) {
         href={show.mapsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="font-heading text-xs tracking-widest text-brand-green hover:underline self-start sm:self-center"
+        className="font-heading text-sm tracking-widest text-brand-green hover:underline self-start sm:self-center"
       >
         MAP IT →
       </a>
@@ -109,13 +109,13 @@ export default function Shows() {
       <div className="max-w-[800px] mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col items-center gap-2 mb-10 text-center">
-          <span className="font-heading text-xs tracking-widest uppercase text-brand-green">
+          <span className="font-heading text-sm tracking-widest uppercase text-brand-green">
             LIVE
           </span>
-          <h2 className="font-heading text-4xl uppercase text-brand-dark">
+          <h2 className="font-heading text-5xl uppercase text-brand-dark">
             SHOWS
           </h2>
-          <p className="font-body text-sm text-brand-muted tracking-wider">
+          <p className="font-body text-base text-brand-muted tracking-wider">
             CATCH US LIVE AT A VENUE NEAR YOU
           </p>
         </div>
@@ -126,7 +126,7 @@ export default function Shows() {
             <button
               key={key}
               onClick={() => setActiveTab(key)}
-              className={`font-heading text-sm tracking-wide uppercase px-6 py-2 transition-colors duration-200 ${
+              className={`font-heading text-base tracking-wide uppercase px-6 py-2 transition-colors duration-200 ${
                 activeTab === key
                   ? "bg-brand-green text-white border border-brand-green"
                   : "bg-transparent text-brand-muted border border-brand-muted"

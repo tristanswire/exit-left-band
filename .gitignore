@@ -28,6 +28,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# large video files — served from hosting, not tracked in git
+/public/videos/*.mp4
+
 # vercel
 .vercel
 

@@ -10,13 +10,13 @@ export default function Listen() {
       <div className="max-w-[1000px] mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col items-center gap-2 mb-12 text-center">
-          <span className="font-heading text-xs tracking-widest uppercase text-brand-green">
+          <span className="font-heading text-sm tracking-widest uppercase text-brand-green">
             MEDIA
           </span>
-          <h2 className="font-heading text-4xl uppercase text-brand-dark">
+          <h2 className="font-heading text-5xl uppercase text-brand-dark">
             LISTEN TO EXIT LEFT
           </h2>
-          <p className="font-body text-sm text-brand-muted tracking-wider">
+          <p className="font-body text-base text-brand-muted tracking-wider">
             A QUICK LOOK AT OUR LIVE ENERGY — CLIPS, PROMO VIDEOS, AND CROWD
             FAVORITES
           </p>
@@ -35,7 +35,7 @@ export default function Listen() {
           </div>
         </div>
 
-        {/* Secondary thumbnails */}
+        {/* Secondary thumbnails hidden until real video IDs are added
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {secondaryVideos.map((video) => (
             <div key={video.id}>
@@ -57,6 +57,7 @@ export default function Listen() {
             </div>
           ))}
         </div>
+        */}
       </div>
     </section>
   );

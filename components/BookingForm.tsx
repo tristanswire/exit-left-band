@@ -6,10 +6,10 @@ import { ctaClass } from "@/components/ui/Button";
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 const inputClass =
-  "w-full bg-[#1c2b22] border border-[#243320] text-white placeholder-brand-muted font-body text-sm px-4 py-3 focus:outline-none focus:border-brand-green transition-colors";
+  "w-full bg-[#1c2b22] border border-[#243320] text-white placeholder-brand-muted font-body text-base px-4 py-3 focus:outline-none focus:border-brand-green transition-colors";
 
 const labelClass =
-  "block font-heading text-xs uppercase tracking-widest text-brand-muted mb-2";
+  "block font-heading text-sm uppercase tracking-widest text-brand-muted mb-2";
 
 function Label({
   children,
@@ -91,10 +91,10 @@ export default function BookingForm() {
       <div className="max-w-[800px] mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col items-center text-center">
-          <p className="font-heading text-xs tracking-widest uppercase text-brand-green mb-3">
+          <p className="font-heading text-sm tracking-widest uppercase text-brand-green mb-3">
             HIRE US
           </p>
-          <h2 className="font-heading text-4xl uppercase text-white">
+          <h2 className="font-heading text-5xl uppercase text-white">
             BOOK EXIT LEFT
           </h2>
           <div className="w-[60px] h-[2px] bg-brand-green mx-auto my-8" />
@@ -273,7 +273,7 @@ export default function BookingForm() {
             {/* Error message */}
             {status === "error" && (
               <div
-                className="mt-4 px-4 py-3 border text-sm font-body"
+                className="mt-4 px-4 py-3 border text-base font-body"
                 style={{
                   background: "rgba(220,38,38,0.1)",
                   borderColor: "rgb(220,38,38)",
