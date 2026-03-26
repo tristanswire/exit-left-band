@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { LinkButton } from "@/components/ui/Button";
 
 export default function Hero() {
@@ -16,12 +17,12 @@ export default function Hero() {
     <section id="hero" className="relative h-screen overflow-hidden">
       {/* Background video (desktop/tablet only) */}
       {showVideo && (
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/rthJrZFSos4?autoplay=1&mute=1&loop=1&playlist=rthJrZFSos4&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           aria-hidden="true"
-          className="z-0"
           style={{
             position: "absolute",
             top: "50%",
@@ -31,21 +32,33 @@ export default function Hero() {
             height: "56.25vw",
             minHeight: "100vh",
             minWidth: "177.78vh",
+            objectFit: "cover",
             pointerEvents: "none",
-            border: "none",
+            zIndex: 0,
           }}
-        />
+        >
+          <source src="/videos/exit-left.mp4" type="video/mp4" />
+        </video>
       )}
 
-      {/* Mobile fallback background */}
-      {!showVideo && <div className="absolute inset-0 z-0 bg-brand-dark" />}
+      {/* Mobile fallback: static image */}
+      {!showVideo && (
+        <Image
+          src="/images/gallery/photo-8.jpg"
+          alt="Exit Left Band"
+          fill
+          priority
+          className="object-cover object-center z-0"
+        />
+      )}
 
       {/* Dark gradient overlay */}
       <div
         className="absolute inset-0 z-10"
         style={{
-          background:
-            "linear-gradient(to bottom, rgba(8,20,12,0.75) 0%, rgba(8,20,12,0.55) 50%, rgba(8,20,12,0.80) 100%)",
+          background: showVideo
+            ? "linear-gradient(to bottom, rgba(8,20,12,0.75) 0%, rgba(8,20,12,0.55) 50%, rgba(8,20,12,0.80) 100%)"
+            : "linear-gradient(to bottom, rgba(8,20,12,0.70) 0%, rgba(8,20,12,0.50) 50%, rgba(8,20,12,0.75) 100%)",
         }}
       />
 
@@ -60,7 +73,7 @@ export default function Hero() {
             opacity: 0,
           }}
         >
-          DFW · DOE ROCK COVER BAND
+          DFW ROCK COVER BAND
         </p>
 
         {/* Band name */}
