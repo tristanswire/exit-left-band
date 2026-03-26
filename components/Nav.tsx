@@ -5,9 +5,10 @@ import Image from "next/image";
 import { ctaClass } from "@/components/ui/Button";
 
 const navLinks = [
+  { label: "SHOWS", href: "#shows" },
   { label: "ABOUT", href: "#about" },
   { label: "MEDIA", href: "#listen" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "PHOTOS", href: "#gallery" },
 ];
 
 export default function Nav() {
