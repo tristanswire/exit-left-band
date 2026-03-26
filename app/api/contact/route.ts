@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     }
 
     await resend.emails.send({
-      from: "Exit Left Booking <bookings@exitleftband.com>",
+      from: "Exit Left Booking <bookings@exitleftbanddallas.com>",
       to: process.env.BOOKING_EMAIL!,
       subject: `New Booking Request — ${eventType} — ${name}`,
       html: `
