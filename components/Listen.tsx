@@ -1,8 +1,10 @@
+/* secondaryVideos — uncomment when real video IDs are ready
 const secondaryVideos: { id: string; title: string }[] = [
   { id: "PLACEHOLDER_ID_1", title: "Live at Lava Cantina" },
   { id: "PLACEHOLDER_ID_2", title: "Corporate Event Highlights" },
   { id: "PLACEHOLDER_ID_3", title: "Private Party Reel" },
 ];
+*/
 
 export default function Listen() {
   return (
