@@ -17,19 +17,25 @@ export default function About() {
 
         {/* Bio */}
         <p className="font-body text-base md:text-lg leading-relaxed mb-6" style={{ color: "#cccccc" }}>
-          Exit Left is a high-energy rock cover band based in Dallas-Fort Worth,
-          TX. We play the songs people actually know and love — the anthems that
-          fill dance floors and keep crowds singing all night long.
+          Exit Left is a high-energy, female-fronted rock cover band based in
+          Dallas–Fort Worth, built to turn any room into a full-blown singalong.
         </p>
         <p className="font-body text-base md:text-lg leading-relaxed mb-6" style={{ color: "#cccccc" }}>
-          From packed bars and music venues to private parties, corporate events,
-          and festivals, we bring a polished and professional show every time. The
-          setlist delivers the energy is real, and we never stop rocking.
+          We don&apos;t just play songs—we deliver the hits people feel. From 90s
+          alt-rock and 2000s throwbacks to today&apos;s biggest anthems, every set
+          is stacked with crowd favorites that keep the dance floor packed and the
+          energy sky-high.
         </p>
         <p className="font-body text-base md:text-lg leading-relaxed mb-6" style={{ color: "#cccccc" }}>
-          Available to hire for events of all sizes across the DFW metroplex
-          and beyond. Inquire below to check availability and get a custom quote
-          for your event.
+          Whether it&apos;s a packed bar, private party, corporate event, or festival
+          stage, Exit Left brings a bold, polished show with powerhouse vocals,
+          tight musicianship, and zero filler. Just wall-to-wall energy from the
+          first note to the last.
+        </p>
+        <p className="font-body text-base md:text-lg leading-relaxed mb-6" style={{ color: "#cccccc" }}>
+          Booking now for events across the DFW metroplex and beyond. If you want
+          a band that your crowd will actually remember—hit the inquiry below and
+          let&apos;s make it happen.
         </p>
 
         {/* CTA */}
