@@ -1,10 +1,10 @@
 const songPreviews = [
-  { src: '/videos/billie-jean.mp4', title: 'Billie Jean' },
-  { src: '/videos/rock-n-roll.mp4', title: 'I Love Rock n Roll' },
-  { src: '/videos/purple-rain.mp4', title: 'Purple Rain' },
-  { src: '/videos/creep.mp4', title: 'Creep' },
-  { src: '/videos/who-knew.mp4', title: 'Who Knew' },
-]
+  { id: "8aWUTaI-6lY", title: "Billie Jean" },
+  { id: "myBPNL7OzCI", title: "Creep" },
+  { id: "39igZlrvogE", title: "Purple Rain" },
+  { id: "Xaw-99_dXVo", title: "I Love Rock N Roll" },
+  { id: "8Lil6i7MJkI", title: "Who Knew" },
+];
 
 export default function Listen() {
   return (
@@ -40,16 +40,16 @@ export default function Listen() {
         {/* Song preview videos */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
           {songPreviews.map((preview) => (
-            <div key={preview.src} className="bg-brand-card overflow-hidden group">
-              <video
-                controls
-                preload="metadata"
-                className="w-full aspect-video object-cover"
-                style={{ backgroundColor: "#0a0a0a" }}
-              >
-                <source src={preview.src} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+            <div key={preview.id} className="bg-brand-card overflow-hidden group">
+              <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+                <iframe
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                  src={`https://www.youtube-nocookie.com/embed/${preview.id}`}
+                  title={preview.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
               <p className="font-heading text-base uppercase tracking-wide text-white px-4 py-3">
                 {preview.title}
               </p>
