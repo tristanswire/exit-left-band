@@ -1,10 +1,10 @@
 const songPreviews = [
-  { src: "/videos/song-preview-1.mp4", title: "Song Preview 1" },
-  { src: "/videos/song-preview-2.mp4", title: "Song Preview 2" },
-  { src: "/videos/song-preview-3.mp4", title: "Song Preview 3" },
-  { src: "/videos/song-preview-4.mp4", title: "Song Preview 4" },
-  { src: "/videos/song-preview-5.mp4", title: "Song Preview 5" },
-];
+  { src: '/videos/billie-jean.mp4', title: 'Billie Jean' },
+  { src: '/videos/rock-n-roll.mp4', title: 'I Love Rock n Roll' },
+  { src: '/videos/purple-rain.mp4', title: 'Purple Rain' },
+  { src: '/videos/creep.mp4', title: 'Creep' },
+  { src: '/videos/who-knew.mp4', title: 'Who Knew' },
+]
 
 export default function Listen() {
   return (
