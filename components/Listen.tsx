@@ -1,10 +1,10 @@
-/* secondaryVideos — uncomment when real video IDs are ready
-const secondaryVideos: { id: string; title: string }[] = [
-  { id: "PLACEHOLDER_ID_1", title: "Live at Lava Cantina" },
-  { id: "PLACEHOLDER_ID_2", title: "Corporate Event Highlights" },
-  { id: "PLACEHOLDER_ID_3", title: "Private Party Reel" },
+const songPreviews = [
+  { src: "/videos/song-preview-1.mp4", title: "Song Preview 1" },
+  { src: "/videos/song-preview-2.mp4", title: "Song Preview 2" },
+  { src: "/videos/song-preview-3.mp4", title: "Song Preview 3" },
+  { src: "/videos/song-preview-4.mp4", title: "Song Preview 4" },
+  { src: "/videos/song-preview-5.mp4", title: "Song Preview 5" },
 ];
-*/
 
 export default function Listen() {
   return (
@@ -25,7 +25,7 @@ export default function Listen() {
         </div>
 
         {/* Featured video */}
-        <div className="mb-10">
+        <div className="mb-8">
           <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
             <iframe
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
@@ -37,29 +37,25 @@ export default function Listen() {
           </div>
         </div>
 
-        {/* Secondary thumbnails hidden until real video IDs are added
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {secondaryVideos.map((video) => (
-            <div key={video.id}>
-              <div
-                style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}
-                className="bg-brand-card"
+        {/* Song preview videos */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+          {songPreviews.map((preview) => (
+            <div key={preview.src} className="bg-brand-card overflow-hidden group">
+              <video
+                controls
+                preload="metadata"
+                className="w-full aspect-video object-cover"
+                style={{ backgroundColor: "#0a0a0a" }}
               >
-                <iframe
-                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-                  src={`https://www.youtube-nocookie.com/embed/${video.id}`}
-                  title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-              <p className="font-heading text-sm uppercase tracking-wide text-brand-dark mt-3">
-                {video.title}
+                <source src={preview.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p className="font-heading text-base uppercase tracking-wide text-white px-4 py-3">
+                {preview.title}
               </p>
             </div>
           ))}
         </div>
-        */}
       </div>
     </section>
   );
