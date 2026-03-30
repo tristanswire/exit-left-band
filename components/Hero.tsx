@@ -44,7 +44,7 @@ export default function Hero() {
       {/* Mobile fallback: static image */}
       {!showVideo && (
         <Image
-          src="/images/gallery/hero-photo.jpg"
+          src="/images/hero-photo.jpg"
           alt="Exit Left Band"
           fill
           priority
