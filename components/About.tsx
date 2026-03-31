@@ -22,9 +22,7 @@ export default function About() {
         </p>
         <p className="font-body text-base md:text-lg leading-relaxed mb-6" style={{ color: "#cccccc" }}>
           We don&apos;t just play songs—we deliver the hits people feel. From 90s
-          alt-rock and 2000s throwbacks to today&apos;s biggest anthems, every set
-          is stacked with crowd favorites that keep the dance floor packed and the
-          energy sky-high.
+          alt-rock and 2000s throwbacks to today&apos;s biggest anthems, every set is stacked with crowd favorites that keeps the energy high and the dance floor packed.
         </p>
         <p className="font-body text-base md:text-lg leading-relaxed mb-6" style={{ color: "#cccccc" }}>
           Whether it&apos;s a packed bar, private party, corporate event, or festival
