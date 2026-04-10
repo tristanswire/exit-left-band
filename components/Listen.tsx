@@ -1,9 +1,9 @@
 const songPreviews = [
-  { id: "8aWUTaI-6lY", title: "Billie Jean" },
-  { id: "myBPNL7OzCI", title: "Creep" },
-  { id: "39igZlrvogE", title: "Purple Rain" },
-  { id: "Xaw-99_dXVo", title: "I Love Rock N Roll" },
-  { id: "8Lil6i7MJkI", title: "Who Knew" },
+  { id: "3Mi9TvJtOk4", title: "Billie Jean" },
+  { id: "Gtwsrvkka10", title: "Creep" },
+  { id: "b8h5T5eVzaE", title: "Purple Rain" },
+  { id: "8WYSSXDdln8", title: "I Love Rock N Roll" },
+  { id: "JYh4M5I4atI", title: "Who Knew" },
 ];
 
 function VideoCard({ preview }: { preview: { id: string; title: string } }) {

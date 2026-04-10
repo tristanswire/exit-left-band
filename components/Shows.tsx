@@ -97,7 +97,7 @@ export default function Shows() {
     .sort((a, b) => b.date.localeCompare(a.date));
 
   const featured = upcoming.find((s) => s.isFeatured);
-  const regularUpcoming = upcoming.filter((s) => !s.isFeatured);
+  const regularUpcoming = upcoming.filter((s) => s !== featured);
 
   const tabs: { key: Tab; label: string }[] = [
     { key: "upcoming", label: "UPCOMING" },

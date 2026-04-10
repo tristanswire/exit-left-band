@@ -11,6 +11,17 @@ export interface Show {
 
 export const shows: Show[] = [
   {
+    id: "show-007",
+    date: "2026-06-06",
+    time: "7:00 PM",
+    venue: "Oak Highlands Brewery",
+    city: "Richardson",
+    state: "TX",
+    mapsUrl:
+      "https://maps.app.goo.gl/C96QMLAn3XG198on6",
+    isFeatured: true,
+  },
+  {
     id: "show-006",
     date: "2026-04-17",
     time: "7:00 PM",
