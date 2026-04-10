@@ -78,7 +78,7 @@ export const shows: Show[] = [
   },
   {
     id: "show-001",
-    date: "2025-01-11",
+    date: "2025-11-11",
     time: "7:00 PM",
     venue: "Guitars & Growlers",
     city: "Richardson",
