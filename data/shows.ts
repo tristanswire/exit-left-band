@@ -28,8 +28,7 @@ export const shows: Show[] = [
     venue: "Private Event",
     city: "",
     state: "",
-    mapsUrl:
-      "",
+    mapsUrl: "",
     isFeatured: true,
   },
   {

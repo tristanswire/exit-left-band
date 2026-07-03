@@ -15,6 +15,10 @@ function formatDate(dateStr: string): string {
   });
 }
 
+function formatLocation(show: Show): string {
+  return [show.city, show.state].filter((part) => part?.trim()).join(", ");
+}
+
 function FeaturedCard({ show }: { show: Show }) {
   return (
     <div className="bg-white border-l-4 border-brand-green p-6 shadow-md mb-4">
@@ -28,17 +32,21 @@ function FeaturedCard({ show }: { show: Show }) {
         <p className="font-heading text-2xl text-brand-dark uppercase">
           {show.venue}
         </p>
-        <p className="font-body text-sm text-brand-muted">
-          {show.city}, {show.state}
-        </p>
-        <a
-          href={show.mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-heading text-base tracking-wide text-brand-green mt-2 hover:underline"
-        >
-          MAP IT →
-        </a>
+        {formatLocation(show) && (
+          <p className="font-body text-sm text-brand-muted">
+            {formatLocation(show)}
+          </p>
+        )}
+        {show.mapsUrl?.trim() && (
+          <a
+            href={show.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-heading text-base tracking-wide text-brand-green mt-2 hover:underline"
+          >
+            MAP IT →
+          </a>
+        )}
       </div>
     </div>
   );
@@ -64,20 +72,24 @@ function ShowRow({ show, isLast }: { show: Show; isLast: boolean }) {
         <p className="font-heading text-lg uppercase text-brand-dark">
           {show.venue}
         </p>
-        <p className="font-body text-sm text-brand-muted">
-          {show.city}, {show.state}
-        </p>
+        {formatLocation(show) && (
+          <p className="font-body text-sm text-brand-muted">
+            {formatLocation(show)}
+          </p>
+        )}
       </div>
 
       {/* Map link */}
-      <a
-        href={show.mapsUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-heading text-sm tracking-widest text-brand-green hover:underline self-start sm:self-center"
-      >
-        MAP IT →
-      </a>
+      {show.mapsUrl?.trim() && (
+        <a
+          href={show.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-heading text-sm tracking-widest text-brand-green hover:underline self-start sm:self-center"
+        >
+          MAP IT →
+        </a>
+      )}
     </div>
   );
 }
