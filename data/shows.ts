@@ -11,14 +11,25 @@ export interface Show {
 
 export const shows: Show[] = [
   {
-    id: "show-008",
-    date: "2026-07-24",
+    id: "show-009",
+    date: "2026-07-31",
     time: "7:00 PM",
     venue: "Guitars & Growlers",
     city: "Richardson",
     state: "TX",
     mapsUrl:
       "https://maps.app.goo.gl/NYw5pqQVJ9hNL3iY7",
+    isFeatured: true,
+  },
+  {
+    id: "show-008",
+    date: "2026-07-31",
+    time: "7:00 PM",
+    venue: "Private Event",
+    city: "",
+    state: "",
+    mapsUrl:
+      "",
     isFeatured: true,
   },
   {
