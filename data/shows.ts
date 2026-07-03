@@ -23,11 +23,11 @@ export const shows: Show[] = [
   },
   {
     id: "show-008",
-    date: "2026-07-31",
+    date: "2026-07-04",
     time: "7:00 PM",
     venue: "Private Event",
     city: "",
-    state: "",
+    state: "Texas",
     mapsUrl:
       "",
     isFeatured: true,
