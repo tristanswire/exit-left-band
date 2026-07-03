@@ -27,7 +27,7 @@ export const shows: Show[] = [
     time: "7:00 PM",
     venue: "Private Event",
     city: "",
-    state: "",
+    state: "Texas",
     mapsUrl: "",
     isFeatured: true,
   },
