@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { shows, Show } from "@/data/shows";
 
 type Tab = "upcoming" | "past";
@@ -21,32 +22,50 @@ function formatLocation(show: Show): string {
 
 function FeaturedCard({ show }: { show: Show }) {
   return (
-    <div className="bg-white border-l-4 border-brand-green p-6 shadow-md mb-4">
-      <span className="inline-block bg-brand-green text-white font-heading text-xs tracking-widest uppercase px-3 py-1 mb-3">
-        NEXT SHOW
-      </span>
-      <div className="flex flex-col gap-1">
-        <p className="font-heading text-xl text-brand-dark">
-          {formatDate(show.date)} · {show.time}
-        </p>
-        <p className="font-heading text-2xl text-brand-dark uppercase">
-          {show.venue}
-        </p>
-        {formatLocation(show) && (
-          <p className="font-body text-sm text-brand-muted">
-            {formatLocation(show)}
+    <div className="bg-white shadow-md mb-4 overflow-hidden">
+      {/* Flyer is full-bleed: the border and padding live on the wrapper below */}
+      {show.image && (
+        <Image
+          src={show.image}
+          alt={`${show.promoTitle ?? "Exit Left"} flyer, ${show.venue}`}
+          width={1200}
+          height={630}
+          className="block w-full h-auto"
+          priority
+        />
+      )}
+      <div className="border-l-4 border-brand-green p-6">
+        <span className="inline-block bg-brand-green text-white font-heading text-xs tracking-widest uppercase px-3 py-1 mb-3">
+          NEXT SHOW
+        </span>
+        <div className="flex flex-col gap-1">
+          <p className="font-heading text-xl text-brand-dark">
+            {formatDate(show.date)} · {show.time}
           </p>
-        )}
-        {show.mapsUrl?.trim() && (
-          <a
-            href={show.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-heading text-base tracking-wide text-brand-green mt-2 hover:underline"
-          >
-            MAP IT →
-          </a>
-        )}
+          <p className="font-heading text-2xl text-brand-dark uppercase">
+            {show.venue}
+          </p>
+          {formatLocation(show) && (
+            <p className="font-body text-sm text-brand-muted">
+              {formatLocation(show)}
+            </p>
+          )}
+          {show.note?.trim() && (
+            <p className="font-body text-sm text-brand-muted italic">
+              {show.note}
+            </p>
+          )}
+          {show.mapsUrl?.trim() && (
+            <a
+              href={show.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-heading text-base tracking-wide text-brand-green mt-2 hover:underline"
+            >
+              MAP IT →
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

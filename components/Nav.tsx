@@ -82,13 +82,14 @@ export default function Nav() {
         </div>
       </div>
 
-      {/* Nav bar */}
+      {/* Nav bar — offset below the announcement bar when one is showing */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed w-full z-50 transition-all duration-300 ${
           scrolled || menuOpen
             ? "bg-brand-dark shadow-[0_2px_20px_rgba(0,0,0,0.6)]"
             : "bg-transparent"
         }`}
+        style={{ top: "var(--announcement-h, 0px)" }}
       >
         <div
           className="mx-auto flex items-center justify-between px-6"
