@@ -44,7 +44,7 @@ export function getPromoShow(today: string): Show | null {
 
 export const shows: Show[] = [
     {
-    id: "show-010",
+    id: "show-011",
     date: "2026-10-24",
     time: "7:00 PM",
     venue: "Guitars & Growlers",
@@ -54,6 +54,20 @@ export const shows: Show[] = [
       "https://maps.app.goo.gl/NYw5pqQVJ9hNL3iY7",
     isFeatured: true,
     image: "/images/shows/unplugged-oct-24.jpg",
+    note: "Unplugged set with Rob and Ty",
+    promoTitle: "Exit Left Unplugged",
+  },
+  {
+    id: "show-010",
+    date: "2026-10-16",
+    time: "7:00 PM",
+    venue: "Guitars & Growlers",
+    city: "Flower Mound",
+    state: "TX",
+    mapsUrl:
+      "https://maps.google.com/?q=400+Flower+Mound+Rd+Suite+160+Flower+Mound+TX+75028",
+    isFeatured: true,
+    image: "/images/shows/unplugged-oct-16.jpg",
     note: "Unplugged set with Rob and Ty",
     promoTitle: "Exit Left Unplugged",
   },
