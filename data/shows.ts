@@ -43,6 +43,20 @@ export function getPromoShow(today: string): Show | null {
 }
 
 export const shows: Show[] = [
+  {
+    id: "show-012",
+    date: "2027-01-08",
+    time: "5:30 PM – 8:30 PM",
+    venue: "Lakewood Brewing Company",
+    city: "Garland",
+    state: "TX",
+    mapsUrl:
+      "https://maps.app.goo.gl/hp7yuWh6k1y6NUuS6",
+    isFeatured: true,
+    image: "/images/shows/unplugged-jan-8.jpg",
+    note: "Unplugged set with Rob and Ty",
+    promoTitle: "Exit Left Unplugged",
+  },
     {
     id: "show-011",
     date: "2026-10-24",
@@ -118,7 +132,7 @@ export const shows: Show[] = [
     id: "show-005",
     date: "2026-02-26",
     time: "7:00 PM",
-    venue: "Lakewood Brewery",
+    venue: "Lakewood Brewing Company",
     city: "Garland",
     state: "TX",
     mapsUrl:
