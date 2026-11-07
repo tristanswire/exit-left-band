@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { shows, Show } from "@/data/shows";
+import { shows, Show, todayInShowTimeZone } from "@/data/shows";
 
 type Tab = "upcoming" | "past";
 
@@ -96,6 +96,11 @@ function ShowRow({ show, isLast }: { show: Show; isLast: boolean }) {
             {formatLocation(show)}
           </p>
         )}
+        {show.note?.trim() && (
+          <p className="font-body text-sm text-brand-muted italic">
+            {show.note}
+          </p>
+        )}
       </div>
 
       {/* Map link */}
@@ -116,15 +121,16 @@ function ShowRow({ show, isLast }: { show: Show; isLast: boolean }) {
 export default function Shows() {
   const [activeTab, setActiveTab] = useState<Tab>("upcoming");
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  // Compare "YYYY-MM-DD" strings in the band's time zone, the same way the
+  // announcement bar does, so a show stays Upcoming through the end of show day.
+  const today = todayInShowTimeZone();
 
   const upcoming = shows
-    .filter((s) => new Date(s.date) >= today)
+    .filter((s) => s.date >= today)
     .sort((a, b) => a.date.localeCompare(b.date));
 
   const past = shows
-    .filter((s) => new Date(s.date) < today)
+    .filter((s) => s.date < today)
     .sort((a, b) => b.date.localeCompare(a.date));
 
   const featured = upcoming.find((s) => s.isFeatured);
