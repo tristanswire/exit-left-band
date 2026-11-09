@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { shows, Show } from "@/data/shows";
+import { shows, Show, todayInShowTimeZone } from "@/data/shows";
 
 type Tab = "upcoming" | "past";
 
@@ -71,6 +71,20 @@ function FeaturedCard({ show }: { show: Show }) {
   );
 }
 
+/**
+ * Shown until the client knows today's date. Same footprint as the Next Show
+ * card (flyer at 1200:630 plus its 235px text block), so the section doesn't
+ * jump when the real list appears.
+ */
+function ListPlaceholder() {
+  return (
+    <div aria-hidden="true" className="bg-white shadow-md mb-4 overflow-hidden">
+      <div className="aspect-[1200/630]" />
+      <div className="h-[235px]" />
+    </div>
+  );
+}
+
 function ShowRow({ show, isLast }: { show: Show; isLast: boolean }) {
   return (
     <div
@@ -96,6 +110,11 @@ function ShowRow({ show, isLast }: { show: Show; isLast: boolean }) {
             {formatLocation(show)}
           </p>
         )}
+        {show.note?.trim() && (
+          <p className="font-body text-sm text-brand-muted italic">
+            {show.note}
+          </p>
+        )}
       </div>
 
       {/* Map link */}
@@ -116,16 +135,28 @@ function ShowRow({ show, isLast }: { show: Show; isLast: boolean }) {
 export default function Shows() {
   const [activeTab, setActiveTab] = useState<Tab>("upcoming");
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  // The page is statically rendered, so a date check during render would
+  // freeze at build time and mismatch on hydration. Like the announcement bar,
+  // decide after mount, in the band's time zone, as a "YYYY-MM-DD" string so a
+  // show stays Upcoming through the end of show day.
+  const [today, setToday] = useState<string | null>(null);
+  useEffect(() => {
+    setToday(todayInShowTimeZone());
+  }, []);
 
-  const upcoming = shows
-    .filter((s) => new Date(s.date) >= today)
-    .sort((a, b) => a.date.localeCompare(b.date));
+  const upcoming =
+    today === null
+      ? []
+      : shows
+          .filter((s) => s.date >= today)
+          .sort((a, b) => a.date.localeCompare(b.date));
 
-  const past = shows
-    .filter((s) => new Date(s.date) < today)
-    .sort((a, b) => b.date.localeCompare(a.date));
+  const past =
+    today === null
+      ? []
+      : shows
+          .filter((s) => s.date < today)
+          .sort((a, b) => b.date.localeCompare(a.date));
 
   const featured = upcoming.find((s) => s.isFeatured);
   const regularUpcoming = upcoming.filter((s) => s !== featured);
@@ -168,8 +199,11 @@ export default function Shows() {
           ))}
         </div>
 
+        {/* Until mounted we don't know today's date: hold the space, show nothing */}
+        {today === null && <ListPlaceholder />}
+
         {/* Upcoming tab */}
-        {activeTab === "upcoming" && (
+        {today !== null && activeTab === "upcoming" && (
           <>
             {upcoming.length === 0 ? (
               <p className="font-body text-sm text-brand-muted text-center py-12">
@@ -195,7 +229,7 @@ export default function Shows() {
         )}
 
         {/* Past tab */}
-        {activeTab === "past" && (
+        {today !== null && activeTab === "past" && (
           <>
             {past.length === 0 ? (
               <p className="font-body text-sm text-brand-muted text-center py-12">
