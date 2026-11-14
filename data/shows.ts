@@ -44,6 +44,17 @@ export function getPromoShow(today: string): Show | null {
 
 export const shows: Show[] = [
   {
+    id: "show-014",
+    date: "2027-02-27",
+    time: "7:00 PM – 10:00 PM",
+    venue: "Oak Highlands Brewery",
+    city: "Richardson",
+    state: "TX",
+    mapsUrl:
+      "https://maps.app.goo.gl/C96QMLAn3XG198on6",
+    isFeatured: true,
+  },
+  {
     id: "show-012",
     date: "2027-01-08",
     time: "5:30 PM – 8:30 PM",
@@ -54,6 +65,20 @@ export const shows: Show[] = [
       "https://maps.app.goo.gl/hp7yuWh6k1y6NUuS6",
     isFeatured: true,
     image: "/images/shows/unplugged-jan-8.jpg",
+    note: "Unplugged set with Rob and Ty",
+    promoTitle: "Exit Left Unplugged",
+  },
+  {
+    id: "show-013",
+    date: "2026-12-07",
+    time: "8:00 PM – 10:00 PM",
+    venue: "The Holy Grail Pub",
+    city: "Plano",
+    state: "TX",
+    mapsUrl:
+      "https://maps.google.com/?q=8240+Preston+Rd+%23150+Plano+TX+75024",
+    isFeatured: true,
+    image: "/images/shows/unplugged-dec-7.jpg",
     note: "Unplugged set with Rob and Ty",
     promoTitle: "Exit Left Unplugged",
   },
