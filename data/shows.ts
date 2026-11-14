@@ -70,7 +70,7 @@ export const shows: Show[] = [
   },
   {
     id: "show-013",
-    date: "2026-12-07",
+    date: "2026-12-05",
     time: "8:00 PM – 10:00 PM",
     venue: "The Holy Grail Pub",
     city: "Plano",
@@ -78,7 +78,7 @@ export const shows: Show[] = [
     mapsUrl:
       "https://maps.google.com/?q=8240+Preston+Rd+%23150+Plano+TX+75024",
     isFeatured: true,
-    image: "/images/shows/unplugged-dec-7.jpg",
+    image: "/images/shows/unplugged-dec-5.jpg",
     note: "Unplugged set with Rob and Ty",
     promoTitle: "Exit Left Unplugged",
   },
