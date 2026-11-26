@@ -82,6 +82,19 @@ export const shows: Show[] = [
     note: "Unplugged set with Rob and Ty",
     promoTitle: "Exit Left Unplugged",
   },
+  {
+    id: "show-015",
+    date: "2026-12-04",
+    time: "7:00 PM – 10:00 PM",
+    venue: "Guitars & Growlers",
+    city: "Flower Mound",
+    state: "TX",
+    mapsUrl:
+      "https://maps.google.com/?q=400+Flower+Mound+Rd+Suite+160+Flower+Mound+TX+75028",
+    isFeatured: true,
+    promoTitle: "Exit Left Live",
+    announce: true,
+  },
     {
     id: "show-011",
     date: "2026-10-24",
