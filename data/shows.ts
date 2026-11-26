@@ -92,6 +92,7 @@ export const shows: Show[] = [
     mapsUrl:
       "https://maps.google.com/?q=400+Flower+Mound+Rd+Suite+160+Flower+Mound+TX+75028",
     isFeatured: true,
+    promoTitle: "Exit Left Live",
     announce: true,
   },
     {
